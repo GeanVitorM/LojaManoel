@@ -1,4 +1,3 @@
-```markdown
 # Loja do Seu Manoel - API de Embalagem
 
 API para automatizar o processo de embalagem de pedidos da loja de jogos online do Seu Manoel.
