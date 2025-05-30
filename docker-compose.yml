@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver-loja
+    environment:
+      SA_PASSWORD: "Asdf1234$$"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+
+  api:
+    build: .
+    container_name: loja-manoel-api
+    ports:
+      - "8080:80"
+    depends_on:
+      - sqlserver
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=LojaManoel;User Id=sa;Password=Asdf1234$$;TrustServerCertificate=true;
+
+volumes:
+  sqlserver_data:
