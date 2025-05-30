@@ -5,24 +5,33 @@ services:
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: sqlserver-loja
     environment:
-      SA_PASSWORD: "Asdf1234$$"
+      SA_PASSWORD: "Asdf1234!@#A"
       ACCEPT_EULA: "Y"
     ports:
       - "1433:1433"
     volumes:
       - sqlserver_data:/var/opt/mssql
 
-  api:
+  identityserver:
+    build:
+      context: .
+      dockerfile: LojaManoel.IdentityServer/Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - ASPNETCORE_URLS=http://+:5000
+
+  loja-api:
     build:
       context: ./LojaManoel.API
-    container_name: loja-manoel-api
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
-    depends_on:
-      - sqlserver
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=LojaManoel;User Id=sa;Password=Asdf1234$$;TrustServerCertificate=true;
+      - ASPNETCORE_URLS=http://+:8080
+    depends_on:
+      - identityserver
+      - sqlserver
 
 volumes:
   sqlserver_data:

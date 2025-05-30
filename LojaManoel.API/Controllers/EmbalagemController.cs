@@ -1,9 +1,11 @@
 ﻿using LojaManoel.API.DTOs;
 using LojaManoel.API.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LojaManoel.API.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class EmbalagemController : ControllerBase

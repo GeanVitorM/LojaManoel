@@ -40,10 +40,8 @@ public class PedidoService : IPedidoService
 
         pedidoExistente.PedidoId = pedido.PedidoId;
 
-        // Remove produtos existentes
         _context.Produtos.RemoveRange(pedidoExistente.Produtos);
 
-        // Adiciona novos produtos
         pedidoExistente.Produtos = pedido.Produtos;
 
         await _context.SaveChangesAsync();

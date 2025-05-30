@@ -77,9 +77,9 @@ public class CaixaServiceTests
     }
 
     [Theory]
-    [InlineData(40, 10, 25, "Caixa 2")] // PS5 - corrigido para Caixa 2
-    [InlineData(40, 30, 30, "Caixa 2")] // Volante
-    [InlineData(25, 15, 20, "Caixa 1")] // Headset
+    [InlineData(40, 10, 25, "Caixa 2")] 
+    [InlineData(40, 30, 30, "Caixa 2")] 
+    [InlineData(25, 15, 20, "Caixa 1")] 
     public void EncontrarCaixaCompativel_ProdutosReais_DeveRetornarCaixaCorreta(
         int altura, int largura, int comprimento, string caixaEsperada)
     {
