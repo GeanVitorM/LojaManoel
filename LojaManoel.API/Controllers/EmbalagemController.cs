@@ -14,8 +14,10 @@ public class EmbalagemController : ControllerBase
     {
         _embalagemService = embalagemService;
     }
-
+    
     [HttpPost("processar")]
+    [ProducesResponseType(typeof(EmbalagemOutputDto), 200)]
+    [ProducesResponseType(400)]
     public async Task<ActionResult<EmbalagemOutputDto>> ProcessarEmbalagem([FromBody] PedidoInputDto input)
     {
         if (input?.Pedidos == null || !input.Pedidos.Any())

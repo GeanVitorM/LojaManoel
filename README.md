@@ -55,9 +55,34 @@ O sistema utiliza um algoritmo guloso que:
 3. Agrupa produtos quando possível na mesma caixa
 4. Retorna produtos que não cabem com observação
 
-## Exemplo de Uso
+## Exemplo de uso da API
 
-Use o Swagger UI para testar a API ou envie requisições para o endpoint de embalagem com o JSON de exemplo fornecido.
+### Criar um Pedido com Produtos
+
+Envie um POST para `/api/Embalagem/processar` com o seguinte JSON:
+
+```json
+{
+  "pedidoId": 100,
+  "pedido": {
+    "pedidoId": 100,
+    "criadoEm": "2025-05-30T13:10:07.554Z"
+  },
+  "produtos": [
+    {
+      "produtoId": "Controle PS4",
+      "altura": 10,
+      "largura": 40,
+      "comprimento": 30,
+      "pedidoId": 100
+    }
+  ],
+  "criadoEm": "2025-05-30T13:10:07.554Z"
+}
+```
+
+> **Observação:**  
+> Não é necessário enviar o campo `pedido` dentro de cada produto, pois ele é ignorado pelo backend.
 
 ## Tecnologias
 
@@ -68,4 +93,3 @@ Use o Swagger UI para testar a API ou envie requisições para o endpoint de emb
 - xUnit (Testes)
 - Moq (Mocks)
 - Swagger/OpenAPI
-```

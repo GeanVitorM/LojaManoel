@@ -11,28 +11,18 @@ services:
       - "1433:1433"
     volumes:
       - sqlserver_data:/var/opt/mssql
-    healthcheck:
-      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P Asdf1234$$ -Q 'SELECT 1'"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
 
   api:
-    build: .
+    build:
+      context: ./LojaManoel.API
     container_name: loja-manoel-api
     ports:
-      - "8080:80"
+      - "8080:8080"
     depends_on:
-      sqlserver:
-        condition: service_healthy
+      - sqlserver
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=LojaManoel;User Id=sa;Password=Asdf1234$$;TrustServerCertificate=true;
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
 
 volumes:
   sqlserver_data:

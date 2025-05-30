@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace LojaManoel.API.Models;
 
@@ -20,7 +21,9 @@ public class Produto
     public int Comprimento { get; set; }
 
     public int PedidoId { get; set; }
-    public virtual Pedido Pedido { get; set; } = null!;
+
+    [JsonIgnore]
+    public virtual Pedido? Pedido { get; set; }
 
     public long Volume => (long)Altura * Largura * Comprimento;
 }
