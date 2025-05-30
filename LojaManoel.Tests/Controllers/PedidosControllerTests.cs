@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LojaManoel.API.Models;
+using LojaManoel.API.Services;
+using LojaManoel.API.Controllers;
+using LojaManoel.API.DTOs;
+using LojaManoel.API.Data;
+using Microsoft.EntityFrameworkCore;
+using Moq;
+using Microsoft.AspNetCore.Mvc;
+using Xunit;
 
 namespace LojaManoel.Tests.Controllers
 {

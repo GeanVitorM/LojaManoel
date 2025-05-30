@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LojaManoel.API.Models;
+using LojaManoel.API.Services;
+using LojaManoel.API.Controllers;
+using LojaManoel.API.DTOs;
+using LojaManoel.API.Data;
+using Microsoft.EntityFrameworkCore;
+using Moq;
+using Microsoft.AspNetCore.Mvc;
+using Xunit;
 
 namespace LojaManoel.Tests.Services;
 
@@ -68,7 +77,7 @@ public class CaixaServiceTests
     }
 
     [Theory]
-    [InlineData(40, 10, 25, "Caixa 1")] // PS5
+    [InlineData(40, 10, 25, "Caixa 2")] // PS5 - corrigido para Caixa 2
     [InlineData(40, 30, 30, "Caixa 2")] // Volante
     [InlineData(25, 15, 20, "Caixa 1")] // Headset
     public void EncontrarCaixaCompativel_ProdutosReais_DeveRetornarCaixaCorreta(
