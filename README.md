@@ -83,8 +83,8 @@ Processa os pedidos e retorna as embalagens sugeridas para cada pedido.
   ],
   "criadoEm": "2025-05-30T13:10:07.554Z"
 }
----
 ```
+---
 **Exemplo de resposta:**
 ```json
 {
